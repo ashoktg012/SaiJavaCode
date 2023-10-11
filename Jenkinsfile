@@ -16,7 +16,7 @@ pipeline {
                 def customImageName = 'ashoktg012/firstimage1:latest'
 
                     // Build the Docker image
-                    sh "docker build -t $customImageName -f Dockerfile ."
+                    docker.build(customImageName, "-f Dockerfile .")
 
                     // Push the Docker image to Docker Hub
                     withCredentials([usernamePassword(credentialsId: 'ashokdockerhub', usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')]) {
